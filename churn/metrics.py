@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 def eval_model(y_test, y_prob, y_pred, plot =False):
-    auc_score = roc_auc_score(y_test, y_pred)
-    tpr, fnr, _ = roc_curve(y_test, y_prob)
+    auc_score = roc_auc_score(y_test, y_prob)
+    fpr, tpr, _ = roc_curve(y_test, y_prob)
     precision, recall, _ = precision_recall_curve(y_test,y_prob)
     average_pre_score = average_precision_score(y_test, y_prob)
     c_matrix = confusion_matrix(y_test, y_pred)
@@ -20,7 +20,7 @@ def eval_model(y_test, y_prob, y_pred, plot =False):
 
     if plot:
         plt.figure()
-        plt.plot(fnr, tpr)
+        plt.plot(fpr, tpr)
         plt.xlabel('False negative rate')
         plt.ylabel('True positive rate')
         plt.title('ROC curve')

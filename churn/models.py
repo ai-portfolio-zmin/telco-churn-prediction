@@ -32,4 +32,4 @@ if __name__ == '__main__':
     num_features, cat_features = get_feature_types(X)
     models = get_models(num_features, cat_features)
     m = models['decision_tree']
-    models[0].fit(X, y)
+    m.fit(X, y)
